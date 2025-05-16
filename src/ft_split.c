@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:42:38 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/10 13:06:45 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/05/16 22:06:16 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,21 @@ char	**ft_split2(char *input, char separator)
 
 	i = 0;
 	words_number = count_words(input, separator);
-	ret = malloc(sizeof(char *) * (words_number + 2)); // +2 para mimetizar el argv  que guarda el nombre del programa y el último para el terminador nulo
+	ret = malloc(sizeof(char *) * (words_number + 2));
 	if (ret == NULL)
 		return (NULL);
-	while (words_number-- >= 0)
+	ret[i] = ft_strdup("42");
+	i++;
+	while (words_number-- > 0)
 	{
 		ret[i] = word_extract(input, separator);
+		if (!ret[i])
+        {
+            while (i > 0)
+                free(ret[--i]);
+            free(ret);
+            return (NULL);
+        }
 		i++;
 	}
 	ret[i] = NULL;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+         #
+#    By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/14 16:23:22 by dansanc3          #+#    #+#              #
-#    Updated: 2025/05/10 14:18:00 by dansanc3         ###   ########.fr        #
+#    Updated: 2025/05/10 19:18:29 by dansanc3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LIBFT_DIR = include/libft
 LIBFT = $(LIBFT_DIR)libft.a
 
 # Source files
-SRC = ft_split ft_atol
+SRC = ft_split ft_atol main stack_init stack_utils
 
 # Object files
 OBJS = $(addprefix obj/, $(addsuffix .o, $(SRC)))

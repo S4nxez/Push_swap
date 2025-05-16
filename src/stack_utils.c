@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:56:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/10 16:24:08 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/05/11 12:04:53 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 t_stack_node	*create_node(int value)
 {
@@ -25,3 +24,25 @@ t_stack_node	*create_node(int value)
 	return (ret);
 }
 
+void	insert_front(t_stack_node **head, t_stack_node *new_node)
+{
+	if (head == NULL || new_node == NULL)
+		return ;
+	new_node->next = *head;
+	new_node->prev = NULL;
+	if (*head != NULL)
+		(*head)->prev = new_node;
+	*head = new_node;
+}
+
+void	free_stack(t_stack_node *head)
+{
+	t_stack_node	*temp;
+
+	while (head)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+}
