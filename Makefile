@@ -6,7 +6,7 @@
 #    By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/14 16:23:22 by dansanc3          #+#    #+#              #
-#    Updated: 2025/05/10 19:18:29 by dansanc3         ###   ########.fr        #
+#    Updated: 2025/05/18 18:50:05 by dansanc3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC = gcc
 # Compiler flags
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR_INCLUDE) -I$(PRINTF_DIR)
 
-# Fractol.h library path
+# push_swap.h library path
 PUSH_SWAP_DIR = include/
 OBJ_DIR = obj
 SRC_DIR = src
@@ -34,7 +34,7 @@ LIBFT_DIR = include/libft
 LIBFT = $(LIBFT_DIR)libft.a
 
 # Source files
-SRC = ft_split ft_atol main stack_init stack_utils
+SRC = ft_split ft_atol main stack_init stack_utils free_argv
 
 # Object files
 OBJS = $(addprefix obj/, $(addsuffix .o, $(SRC)))

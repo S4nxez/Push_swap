@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_argv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:33:47 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/18 19:52:42 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/05/18 19:57:46 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	free_argv(char **argv)
 {
-	bool			flag;
-	t_stack_node	*a;
-	//t_stack_node	*b;
+	int	i;
 
-	a = NULL;
-	//b = NULL;
-	flag = false;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (1);
-	else if (argc == 2)
+	i = 0;
+	while (argv[i])
 	{
-		argv = ft_split2(argv[1], ' ');
-		flag = true;
+		free(argv[i]);
+		i++;
 	}
-	stack_init(&a, argv + 1);
-	//stack_init(&b, "\0");
-	if (flag)
-		free_argv(argv);
-	free_stack(a);
-	//free_stack(b);
+	free(argv);
 }

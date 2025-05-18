@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   check_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 13:33:04 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/10 13:33:07 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/05/18 19:17:27 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	validate_number(char *input)
+#include "push_swap.h"
+
+bool	validate_number(char *input)
 {
 	int	i;
 
@@ -18,16 +20,16 @@ int	validate_number(char *input)
 	if (input[i] == '+' || input[i] == '-')
 	{
 		if (!(input[i + 1] >= '0' && input[i + 1] <= '9'))
-			return (1);
+			return (false);
 		i++;
 	}
 	else if (!(input[i] >= '0' && input[i] <= '9'))
-		return (1);
+		return (true);
 	while (input[i])
 	{
 		if (input[i] < '0' || input[i] > '9')
-			return (1);
+			return (false);
 		i++;
 	}
-	return (0);
+	return (true);
 }

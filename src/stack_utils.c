@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:56:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/11 12:04:53 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/05/18 19:55:42 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,21 @@ void	free_stack(t_stack_node *head)
 		head = head->next;
 		free(temp);
 	}
+}
+
+/**
+ * Checks for repeated values in a stack.
+ *
+ * @return false if there are no repeated values.
+ * @return true if there are repeated values.
+ */
+bool	has_reps(t_stack_node *head, int new_val)
+{
+	while (head != NULL)
+	{
+		if (head->value == new_val)
+			return (true);
+		head = head->next;
+	}
+	return (false);
 }
