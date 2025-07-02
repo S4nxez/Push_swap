@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:33:47 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/18 19:52:42 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:07:11 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ int	main(int argc, char **argv)
 		argv = ft_split2(argv[1], ' ');
 		flag = true;
 	}
-	stack_init(&a, argv + 1);
+	if (stack_init(&a, argv + 1) == false)
+	{
+		if (flag)
+			free_argv(argv);
+		free_stack(a);
+		return (1);
+	}
 	//stack_init(&b, "\0");
 	if (flag)
 		free_argv(argv);

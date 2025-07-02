@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:56:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/18 19:55:42 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/02 19:13:42 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	free_stack(t_stack_node *head)
 		head = head->next;
 		free(temp);
 	}
+	head = NULL;
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:42:38 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/16 22:06:16 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/02 19:56:30 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static char	*word_extract(char *input, char separator)
 	while (input[i + size] && input[i + size] != separator)
 		size++;
 	ret = malloc(sizeof(char) * (size + 1));
+	if (ret == NULL)
+		return (NULL);
 	j = 0;
 	while (j < size)
 		ret[j++] = input[i++];
@@ -104,15 +106,16 @@ char	**ft_split2(char *input, char separator)
 	{
 		ret[i] = word_extract(input, separator);
 		if (!ret[i])
-        {
-            while (i > 0)
-                free(ret[--i]);
-            free(ret);
-            return (NULL);
-        }
+		{
+			while (i > 0)
+				free(ret[--i]);
+			free(ret);
+			return (NULL);
+		}
 		i++;
 	}
 	ret[i] = NULL;
+	i = 0;
 	return (ret);
 }
 

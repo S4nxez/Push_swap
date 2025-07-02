@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:34:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/05/18 19:54:12 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/06/30 20:30:57 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ typedef struct s_stack_node
 t_stack_node	*create_node(int value);
 void			insert_front(t_stack_node **head, t_stack_node *new_node);
 char			**ft_split2(char *input, char separator);
-void			stack_init(t_stack_node **a, char **argv);
+bool			stack_init(t_stack_node **a, char **argv);
 long			ft_atol(char *str);
 void			free_stack(t_stack_node *head);
 void			free_argv(char **argv);
 bool			has_reps(t_stack_node *head, int new_val);
+bool			validate_number(char *input);
 #endif
