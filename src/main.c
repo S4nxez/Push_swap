@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:33:47 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/02 20:07:11 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:57:47 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,21 @@
  * @return 1 if ./push_swap 12 32 4
  * @return 2 if ./push_swap "12 32 4"
 */
-int	parse_input(int argc, char **argv)
+int	parse_input(int argc, char ***argvp)
 {
+	char	**argv;
+
+	argv = *argvp;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (0);
-	else if (argc == 2)
+	if (argc == 2)
 	{
-		argv = ft_split2(argv[1], ' ');
+		*argvp = ft_split2(argv[1], ' ');
 		return (2);
 	}
 	return (1);
 }
+
 
 int	main(int argc, char **argv)
 {
@@ -39,9 +43,13 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	entry = parse_input(argc, argv);
+	entry = parse_input(argc, &argv);
 	if (!entry)
+	{
+		free_stack(a);
+		free_stack(b);
 		return (0);
+	}
 	if (stack_init(&a, argv + 1) == false)
 	{
 		if (entry == 2)

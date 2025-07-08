@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+         #
+#    By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/14 16:23:22 by dansanc3          #+#    #+#              #
-#    Updated: 2025/05/18 18:50:05 by dansanc3         ###   ########.fr        #
+#    Updated: 2025/07/08 18:05:52 by dansanc3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ LIBFT_DIR = include/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
 # Source files
-SRC = ft_split ft_atol main stack_init stack_utils free_argv check_syntax calculate_chunks
+SRC = ft_split ft_atol main stack_init stack_utils free_argv check_syntax calculate_chunks operations
 
 # Object files
 OBJS = $(addprefix obj/, $(addsuffix .o, $(SRC)))

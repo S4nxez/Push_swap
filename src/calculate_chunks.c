@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_chunks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:13:51 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/05 14:13:51 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:25:34 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,30 @@ int	get_chunk_count(int size)
 		return (11);
 }
 
+int	count_chunk_elements(t_stack_node *a, int start, int end)
+{
+	int	count = 0;
+	while (a)
+	{
+		if (a->final_index >= start && a->final_index <= end)
+			count++;
+		a = a->next;
+	}
+	return (count);
+}
+
 void	push_chunk_to_b(t_stack_node **a,
 						t_stack_node **b,
 						int chunk_start,
 						int chunk_end)
 {
-	t_stack_node	*current;
-	int				size;
-	int				pushed;
-
-	size = get_stack_size(*a);
-	pushed = 0;
-	while (pushed < size)
+	int	to_push = count_chunk_elements(*a, chunk_start, chunk_end);
+	while (to_push > 0)
 	{
-		current = *a;
-		if (current->final_index >= chunk_start
-			&& current->final_index <= chunk_end)
+		if (*a && (*a)->final_index >= chunk_start && (*a)->final_index <= chunk_end)
 		{
 			pb(a, b);
-			pushed++;
+			to_push--;
 		}
 		else
 			ra(a);
@@ -79,7 +84,6 @@ void	k_sort(t_stack_node **a, t_stack_node **b, int size, int chunks_count)
 	while (i < chunks_count)
 	{
 		chunk_start = i * chunk_size;
-
 		if (i == chunks_count - 1)
 			chunk_end = size - 1;
 		else
@@ -92,7 +96,7 @@ void	k_sort(t_stack_node **a, t_stack_node **b, int size, int chunks_count)
 void	calculate_chunks(t_stack_node *a, t_stack_node *b)
 {
 	int	size;
-	int chunks_count;
+	int	chunks_count;
 
 	assign_final_index(a);
 	size = get_stack_size(a);

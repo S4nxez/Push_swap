@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 13:33:04 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/06/30 20:16:50 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:35:54 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	validate_number(char *input)
 		return (false);
 	while (input[i])
 	{
-		if (input[i] < '0' || input[i] > '9')
+		if (!(input[i] >= '0' && input[i] <= '9'))
 			return (false);
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:34:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/06/30 20:30:57 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:04:31 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,6 @@ bool			has_reps(t_stack_node *head, int new_val);
 bool			validate_number(char *input);
 int				get_stack_size(t_stack_node *head);
 void			calculate_chunks(t_stack_node *a, t_stack_node *b);
+void			pb(t_stack_node **a, t_stack_node **b);
+void			ra(t_stack_node **a);
 #endif
