@@ -64,3 +64,16 @@ bool	has_reps(t_stack_node *head, int new_val)
 	}
 	return (false);
 }
+
+int	get_stack_size(t_stack_node *head)
+{
+	int	size;
+
+	size = 0;
+	while (head)
+	{
+		size++;
+		head = head->next;
+	}
+	return (size);
+}

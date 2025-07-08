@@ -17,7 +17,11 @@ NAME = push_swap
 CC = gcc
 
 # Compiler flags
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR_INCLUDE) -I$(PRINTF_DIR)
+ifeq ($(OS),Windows_NT)
+    CFLAGS = -Wall -Wextra -Werror -g3 -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR_INCLUDE) -I$(PRINTF_DIR)
+else
+    CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR_INCLUDE) -I$(PRINTF_DIR)
+endif
 
 # push_swap.h library path
 PUSH_SWAP_DIR = include/
@@ -30,11 +34,11 @@ PRINT = include/ft_printf/libftprintf.a
 
 # Libft library path
 LIBFT_DIR_INCLUDE = include/libft/include
-LIBFT_DIR = include/libft
+LIBFT_DIR = include/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
 # Source files
-SRC = ft_split ft_atol main stack_init stack_utils free_argv
+SRC = ft_split ft_atol main stack_init stack_utils free_argv check_syntax calculate_chunks
 
 # Object files
 OBJS = $(addprefix obj/, $(addsuffix .o, $(SRC)))
@@ -44,34 +48,56 @@ SRCS = $(addsuffix .c, $(SRC))
 OBJF =	.cache_exists
 
 # Libraries
-LIBS = -lXext -lX11 -lm -Linclude/libft/ -lft -Linclude/ft_printf/ -lftprintf
+ifeq ($(OS),Windows_NT)
+    LIBS = -lm
+else
+    LIBS = -lXext -lX11 -lm
+endif
 
 # Compilation rule
-all: $(OBJF) $(LIBFT) $(NAME)
+all: $(OBJF) $(LIBFT) $(PRINT) $(NAME)
 
 # Regla para compilar los archivos objeto
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(PUSH_SWAP_DIR)/push_swap.h | $(OBJF)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBS)
+$(NAME): $(OBJS) $(LIBFT) $(PRINT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(PRINT) $(LIBS)
 
 $(OBJF):
-		@mkdir -p $(OBJ_DIR)/
+ifeq ($(OS),Windows_NT)
+	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
+else
+	@mkdir -p $(OBJ_DIR)/
+endif
 
 # Rule to compile libft
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
+# Rule to compile ft_printf
+$(PRINT):
+	$(MAKE) -C include/ft_printf
+
 # Rule to clean object files
 clean:
+ifeq ($(OS),Windows_NT)
+	if exist $(OBJ_DIR) rmdir /s /q $(OBJ_DIR)
+else
 	rm -rf $(OBJ_DIR)
+endif
 	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C include/ft_printf clean
 
 # Rule to clean all generated files
 fclean: clean
+ifeq ($(OS),Windows_NT)
+	if exist $(NAME) del /q $(NAME)
+else
 	rm -f $(NAME)
+endif
 	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C include/ft_printf fclean
 
 # Rule to recompile the entire project
 re: fclean all

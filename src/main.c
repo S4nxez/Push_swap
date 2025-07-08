@@ -12,32 +12,46 @@
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+/**
+ * Checks input and transforms it in a versatile argv
+ *
+ * @return 0 if argument number is not correct
+ * @return 1 if ./push_swap 12 32 4
+ * @return 2 if ./push_swap "12 32 4"
+*/
+int	parse_input(int argc, char **argv)
 {
-	bool			flag;
-	t_stack_node	*a;
-	//t_stack_node	*b;
-
-	a = NULL;
-	//b = NULL;
-	flag = false;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (1);
+		return (0);
 	else if (argc == 2)
 	{
 		argv = ft_split2(argv[1], ' ');
-		flag = true;
+		return (2);
 	}
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
+	int				entry;
+	t_stack_node	*a;
+	t_stack_node	*b;
+
+	a = NULL;
+	b = NULL;
+	entry = parse_input(argc, argv);
+	if (!entry)
+		return (0);
 	if (stack_init(&a, argv + 1) == false)
 	{
-		if (flag)
+		if (entry == 2)
 			free_argv(argv);
 		free_stack(a);
 		return (1);
 	}
-	//stack_init(&b, "\0");
-	if (flag)
+	calculate_chunks(a, b);
+	if (entry == 2)
 		free_argv(argv);
 	free_stack(a);
-	//free_stack(b);
+	free_stack(b);
 }

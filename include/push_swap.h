@@ -41,4 +41,6 @@ void			free_stack(t_stack_node *head);
 void			free_argv(char **argv);
 bool			has_reps(t_stack_node *head, int new_val);
 bool			validate_number(char *input);
+int				get_stack_size(t_stack_node *head);
+void			calculate_chunks(t_stack_node *a, t_stack_node *b);
 #endif

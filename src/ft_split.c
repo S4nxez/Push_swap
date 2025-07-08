@@ -66,7 +66,6 @@ static char	*word_extract(char *input, char separator)
 	ret[size] = '\0';
 	return (ret);
 }
-
 /**
  * tester count words
 
@@ -118,7 +117,6 @@ char	**ft_split2(char *input, char separator)
 	i = 0;
 	return (ret);
 }
-
 
 /**
  * tester ft_split

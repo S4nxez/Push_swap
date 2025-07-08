@@ -22,17 +22,25 @@ void	print_stack_forward(t_stack_node *head) //TODO PARA TESTEO, ESTO SE DEJA CO
 	ft_printf("\n");
 }
 
-void	stack_init(t_stack_node **a, char **argv)
+bool	stack_init(t_stack_node **a, char **argv)
 {
 	int	val;
 
 	while (*argv)
 	{
+		if (!validate_number(*argv))
+		{
+			ft_printf("Error\n");
+			return (false);
+		}
 		val = ft_atol(*argv);
-		argv++;
 		if (has_reps(*a, val))
-			return ;
+		{
+			ft_printf("Error\n");
+			return (false);
+		}
 		insert_front(a, create_node(val));
+		argv++;
 	}
-	print_stack_forward(*a);
+	return (true);
 }

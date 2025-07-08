@@ -56,15 +56,15 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJF):
-			@mkdir -p $(OBJ_DIR)
+	if not exist obj mkdir obj
 
 clean:
-			@$(RM) -rf $(OBJ_DIR)
-			@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
+	del /q obj\*.o 2>nul || echo "No object files to clean"
+	@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
-			@$(RM) -f $(NAME)
-			@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
+	del /q $(NAME) 2>nul || echo "No library to clean"
+	@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
 
 re:			fclean all
 			@echo "$(GREEN)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
