@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_chunks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:13:51 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/08 19:25:34 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:06:15 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ int	get_chunk_count(int size)
 
 int	count_chunk_elements(t_stack_node *a, int start, int end)
 {
-	int	count = 0;
+	int	count;
+
+	count = 0;
 	while (a)
 	{
 		if (a->final_index >= start && a->final_index <= end)
@@ -59,10 +61,13 @@ void	push_chunk_to_b(t_stack_node **a,
 						int chunk_start,
 						int chunk_end)
 {
-	int	to_push = count_chunk_elements(*a, chunk_start, chunk_end);
+	int	to_push;
+
+	to_push = count_chunk_elements(*a, chunk_start, chunk_end);
 	while (to_push > 0)
 	{
-		if (*a && (*a)->final_index >= chunk_start && (*a)->final_index <= chunk_end)
+		if (*a && (*a)->final_index >= chunk_start
+			&& (*a)->final_index <= chunk_end)
 		{
 			pb(a, b);
 			to_push--;
@@ -93,13 +98,14 @@ void	k_sort(t_stack_node **a, t_stack_node **b, int size, int chunks_count)
 	}
 }
 
-void	calculate_chunks(t_stack_node *a, t_stack_node *b)
+void	calculate_chunks(t_stack_node **a, t_stack_node **b)
 {
 	int	size;
 	int	chunks_count;
 
-	assign_final_index(a);
-	size = get_stack_size(a);
+	assign_final_index(*a);
+	size = get_stack_size(*a);
 	chunks_count = get_chunk_count(size);
-	k_sort(&a, &b, size, chunks_count);
+	k_sort(a, b, size, chunks_count);
+	//return_to_a(a, b);
 }

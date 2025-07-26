@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:33:47 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/08 18:57:47 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:00:59 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	parse_input(int argc, char ***argvp)
 	return (1);
 }
 
-
 int	main(int argc, char **argv)
 {
 	int				entry;
@@ -57,9 +56,10 @@ int	main(int argc, char **argv)
 		free_stack(a);
 		return (1);
 	}
-	calculate_chunks(a, b);
+	calculate_chunks(&a, &b);
 	if (entry == 2)
 		free_argv(argv);
 	free_stack(a);
 	free_stack(b);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:34:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/08 18:04:31 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:04:19 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ void			free_argv(char **argv);
 bool			has_reps(t_stack_node *head, int new_val);
 bool			validate_number(char *input);
 int				get_stack_size(t_stack_node *head);
-void			calculate_chunks(t_stack_node *a, t_stack_node *b);
+void			calculate_chunks(t_stack_node **a, t_stack_node **b);
 void			pb(t_stack_node **a, t_stack_node **b);
+void			pa(t_stack_node **b, t_stack_node **a);
 void			ra(t_stack_node **a);
+void			rb(t_stack_node **b);
+void			return_to_a(t_stack_node **a, t_stack_node **b);
+void	print_stack_forward(t_stack_node *head); //TODO PARA TESTEO, ESTO SE DEJA COMENTADO
 #endif
