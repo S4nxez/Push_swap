@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:13:51 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/26 18:06:15 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 01:15:49 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,14 @@ void	calculate_chunks(t_stack_node **a, t_stack_node **b)
 	int	size;
 	int	chunks_count;
 
-	assign_final_index(*a);
 	size = get_stack_size(*a);
+	if (size <= 5)
+	{
+		sort_short(a);
+		return ;
+	}
+	assign_final_index(*a);
 	chunks_count = get_chunk_count(size);
 	k_sort(a, b, size, chunks_count);
-	//return_to_a(a, b);
+	return_to_a(a, b);
 }

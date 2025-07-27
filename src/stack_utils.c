@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:56:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/02 19:13:42 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 10:20:13 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,26 @@ void	insert_front(t_stack_node **head, t_stack_node *new_node)
 	if (*head != NULL)
 		(*head)->prev = new_node;
 	*head = new_node;
+}
+
+void	insert_back(t_stack_node **head, t_stack_node *new_node)
+{
+	t_stack_node	*temp;
+
+	if (head == NULL || new_node == NULL)
+		return ;
+	new_node->next = NULL;
+	if (*head == NULL)
+	{
+		new_node->prev = NULL;
+		*head = new_node;
+		return ;
+	}
+	temp = *head;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = new_node;
+	new_node->prev = temp;
 }
 
 void	free_stack(t_stack_node *head)
@@ -76,4 +96,15 @@ int	get_stack_size(t_stack_node *head)
 		head = head->next;
 	}
 	return (size);
+}
+
+bool	is_sort(t_stack_node *a)
+{
+	while (a && a->next)
+	{
+		if (a->next->value < a->value)
+			return (false);
+		a = a->next;
+	}
+	return (true);
 }

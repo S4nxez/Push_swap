@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:12:10 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/26 18:13:47 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 10:35:16 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	stack_init(t_stack_node **a, char **argv)
 			ft_putstr_fd("Error\n", 2);
 			return (false);
 		}
-		insert_front(a, create_node(val));
+		insert_back(a, create_node(val));
 		argv++;
 	}
 	return (true);
