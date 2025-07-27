@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_short.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:13:51 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/27 12:17:15 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 19:11:51 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,13 @@ void	sort_five(t_stack_node **a)
 
 	b = NULL;
 	min_pos = find_min_pos(*a);
-	while (min_pos--)
-		ra(a);
+	if (min_pos != 4)
+	{
+		while (min_pos--)
+			ra(a);
+	}
+	else
+		rra(a);
 	pb(a, &b);
 	min_pos = find_min_pos(*a);
 	while (min_pos--)

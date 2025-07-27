@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:34:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/27 12:09:30 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 17:55:15 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stack_node
 }				t_stack_node;
 
 t_stack_node	*create_node(int value);
-void			insert_back(t_stack_node **head, t_stack_node *new_node);
+bool			insert_back(t_stack_node **head, t_stack_node *new_node);
 void			insert_front(t_stack_node **head, t_stack_node *new_node);
 char			**ft_split2(char *input, char separator);
 bool			stack_init(t_stack_node **a, char **argv);
@@ -64,5 +64,6 @@ void			rra(t_stack_node **a);
 void			get_first_and_last(t_stack_node *head,
 					t_stack_node **first,
 					t_stack_node **last);
+void			free_stacks(t_stack_node *a, t_stack_node *b);
 
 #endif

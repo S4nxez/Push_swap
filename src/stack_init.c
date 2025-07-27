@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:12:10 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/27 13:15:24 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 19:33:43 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ bool	stack_init(t_stack_node **a, char **argv)
 {
 	int	val;
 
+	if (!a || !argv)
+		return (false);
+	*a = NULL;
 	while (*argv)
 	{
 		if (!validate_number(*argv))
@@ -29,7 +32,8 @@ bool	stack_init(t_stack_node **a, char **argv)
 			ft_putstr_fd("Error\n", 2);
 			return (false);
 		}
-		insert_back(a, create_node(val));
+		if (!insert_back(a, create_node(val)) && *a != NULL)
+			free_stack(*a);
 		argv++;
 	}
 	return (true);
@@ -46,24 +50,25 @@ void	insert_front(t_stack_node **head, t_stack_node *new_node)
 	*head = new_node;
 }
 
-void	insert_back(t_stack_node **head, t_stack_node *new_node)
+bool	insert_back(t_stack_node **head, t_stack_node *new_node)
 {
 	t_stack_node	*temp;
 
 	if (head == NULL || new_node == NULL)
-		return ;
+		return (false);
 	new_node->next = NULL;
 	if (*head == NULL)
 	{
 		new_node->prev = NULL;
 		*head = new_node;
-		return ;
+		return (true);
 	}
 	temp = *head;
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = new_node;
 	new_node->prev = temp;
+	return (true);
 }
 
 void	get_first_and_last(t_stack_node *head,

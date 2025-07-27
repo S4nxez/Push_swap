@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:56:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/27 12:16:41 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 17:59:55 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,6 @@ t_stack_node	*create_node(int value)
 	ret->value = value;
 	ret->next = NULL;
 	return (ret);
-}
-
-void	free_stack(t_stack_node *head)
-{
-	t_stack_node	*temp;
-
-	while (head)
-	{
-		temp = head;
-		head = head->next;
-		free(temp);
-	}
-	head = NULL;
 }
 
 /**

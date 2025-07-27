@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
+/*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:33:47 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/27 12:21:05 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 17:59:19 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ int	parse_input(int argc, char ***argvp)
 		return (2);
 	}
 	return (1);
-}
-
-void	free_stacks(t_stack_node *a, t_stack_node *b)
-{
-	free_stack(a);
-	free_stack(b);
 }
 
 int	main(int argc, char **argv)
