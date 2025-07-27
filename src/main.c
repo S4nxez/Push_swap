@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:33:47 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/13 20:00:59 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 12:21:05 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int	parse_input(int argc, char ***argvp)
 	return (1);
 }
 
+void	free_stacks(t_stack_node *a, t_stack_node *b)
+{
+	free_stack(a);
+	free_stack(b);
+}
+
 int	main(int argc, char **argv)
 {
 	int				entry;
@@ -59,7 +65,6 @@ int	main(int argc, char **argv)
 	calculate_chunks(&a, &b);
 	if (entry == 2)
 		free_argv(argv);
-	free_stack(a);
-	free_stack(b);
+	free_stacks(a, b);
 	return (0);
 }

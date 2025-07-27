@@ -6,33 +6,11 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:13:51 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/27 01:15:49 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 12:02:34 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	assign_final_index(t_stack_node *head)
-{
-	t_stack_node	*current;
-	t_stack_node	*compare;
-	int				index;
-
-	current = head;
-	while (current)
-	{
-		index = 0;
-		compare = head;
-		while (compare)
-		{
-			if (current->value > compare->value)
-				index++;
-			compare = compare->next;
-		}
-		current->final_index = index;
-		current = current->next;
-	}
-}
 
 int	get_chunk_count(int size)
 {
@@ -42,6 +20,9 @@ int	get_chunk_count(int size)
 		return (11);
 }
 
+/**
+ * Calculates the chunk sizes.
+ */
 int	count_chunk_elements(t_stack_node *a, int start, int end)
 {
 	int	count;

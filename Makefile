@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+         #
+#    By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/14 16:23:22 by dansanc3          #+#    #+#              #
-#    Updated: 2025/07/08 18:05:52 by dansanc3         ###   ########.fr        #
+#    Updated: 2025/07/27 13:13:50 by dansanc3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC = gcc
 ifeq ($(OS),Windows_NT)
     CFLAGS = -Wall -Wextra -Werror -g3 -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR_INCLUDE) -I$(PRINTF_DIR)
 else
-    CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR_INCLUDE) -I$(PRINTF_DIR)
+    CFLAGS = -Wall -Wextra -Werror -g3  -I$(PUSH_SWAP_DIR) -I$(LIBFT_DIR_INCLUDE) -I$(PRINTF_DIR)
 endif
 
 # push_swap.h library path
@@ -38,7 +38,8 @@ LIBFT_DIR = include/libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
 # Source files
-SRC = ft_split ft_atol main stack_init stack_utils free_argv check_syntax calculate_chunks operations
+SRC = ft_split ft_atol main stack_init stack_utils free_argv check_syntax calculate_chunks operations \
+ps_operations sort_short ps_operations2
 
 # Object files
 OBJS = $(addprefix obj/, $(addsuffix .o, $(SRC)))

@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 14:13:51 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/27 10:03:41 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 12:17:15 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	sort_three(t_stack_node **a)
 	first = (*a)->value;
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
-	//ft_printf("%d, %d, %d\n", first, second, third);
 	if (first > second && second < third && first < third)
 		sa(a);
 	else if (first > second && second > third)
@@ -42,10 +41,11 @@ void	sort_three(t_stack_node **a)
 
 void	sort_four(t_stack_node **a)
 {
-	t_stack_node	*b = NULL;
+	t_stack_node	*b;
 	int				min_pos;
 	int				i;
 
+	b = NULL;
 	min_pos = find_min_pos(*a);
 	i = 0;
 	while (i < min_pos)

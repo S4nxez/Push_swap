@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:42:38 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/02 19:56:30 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 12:23:05 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ char	**ft_split2(char *input, char separator)
 		i++;
 	}
 	ret[i] = NULL;
-	i = 0;
 	return (ret);
 }
 

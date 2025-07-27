@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:34:05 by dansanc3          #+#    #+#             */
-/*   Updated: 2025/07/26 18:04:19 by dansanc3         ###   ########.fr       */
+/*   Updated: 2025/07/27 12:09:30 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_stack_node
 }				t_stack_node;
 
 t_stack_node	*create_node(int value);
+void			insert_back(t_stack_node **head, t_stack_node *new_node);
 void			insert_front(t_stack_node **head, t_stack_node *new_node);
 char			**ft_split2(char *input, char separator);
 bool			stack_init(t_stack_node **a, char **argv);
@@ -48,5 +49,20 @@ void			pa(t_stack_node **b, t_stack_node **a);
 void			ra(t_stack_node **a);
 void			rb(t_stack_node **b);
 void			return_to_a(t_stack_node **a, t_stack_node **b);
-void	print_stack_forward(t_stack_node *head); //TODO PARA TESTEO, ESTO SE DEJA COMENTADO
+bool			is_sort(t_stack_node *a);
+void			sort_short(t_stack_node **a);
+void			sa(t_stack_node **a);
+void			rra(t_stack_node **a);
+void			ra(t_stack_node **a);
+int				find_min_pos(t_stack_node *stack);
+bool			is_sort(t_stack_node *a);
+void			sb(t_stack_node **b);
+void			rrb(t_stack_node **b);
+void			assign_final_index(t_stack_node *head);
+void			rrb(t_stack_node **b);
+void			rra(t_stack_node **a);
+void			get_first_and_last(t_stack_node *head,
+					t_stack_node **first,
+					t_stack_node **last);
+
 #endif
