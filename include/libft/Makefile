@@ -30,18 +30,10 @@ bonus: $(OBJS) $(OBJS_BNS)
 	ar -rcs $(NAME) $(OBJS) $(OBJS_BNS)
 
 clean:
-ifeq ($(OS),Windows_NT)
-	if exist $(SRC_DIR)\*.o del /q $(SRC_DIR)\*.o
-else
 	rm -f $(OBJS) $(OBJS_BNS)
-endif
 
 fclean: clean
-ifeq ($(OS),Windows_NT)
-	if exist $(NAME) del /q $(NAME)
-else
 	rm -f $(NAME)
-endif
 
 re: fclean all
 

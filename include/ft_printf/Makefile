@@ -6,7 +6,7 @@
 #    By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 16:14:41 by dansanc3          #+#    #+#              #
-#    Updated: 2024/05/17 17:29:16 by dansanc3         ###   ########.fr        #
+#    Updated: 2025/07/27 13:48:29 by dansanc3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,25 +49,21 @@ all:		$(OBJF) $(NAME)
 
 $(NAME):	$(OBJ)
 			@$(AR) $(NAME) $(OBJ)
-			@echo "$(GREEN)ft_printf compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJF):
-	if not exist obj mkdir obj
+	@mkdir -p $(OBJ_DIR)
+	@touch $(OBJF)
 
 clean:
-	del /q obj\*.o 2>nul || echo "No object files to clean"
-	@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
+	@$(RM) $(OBJ)
 
-fclean:		clean
-	del /q $(NAME) 2>nul || echo "No library to clean"
-	@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
+fclean: clean
+	@$(RM) $(NAME)
 
 re:			fclean all
-			@echo "$(GREEN)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
 
 norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
