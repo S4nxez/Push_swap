@@ -3,14 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+         #
+#    By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 16:14:41 by dansanc3          #+#    #+#              #
-#    Updated: 2025/07/27 13:48:29 by dansanc3         ###   ########.fr        #
+#    Updated: 2025/07/27 20:03:22 by dansanc3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-#Variables
 
 NAME		= libftprintf.a
 INCLUDE		= include
@@ -21,41 +19,23 @@ CFLAGS		= -Wall -Werror -Wextra -I./include
 RM			= rm -f
 AR			= ar rc
 
-# Colors
-
-DEF_COLOR = \033[0;39m
-GRAY = \033[0;90m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-MAGENTA = \033[0;95m
-CYAN = \033[0;96m
-WHITE = \033[0;97m
+# Colors (no se usan aquí pero puedes usarlos para mensajes de log)
 
 #Sources
+SRC_FILES	= ft_printf ft_putchar ft_putstr ft_putnbr ft_putunbr ft_puthex
+SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-SRC_FILES	=	ft_printf ft_putchar ft_putstr ft_putnbr ft_putunbr ft_puthex
+all: $(NAME)
 
+$(NAME): $(OBJ)
+	@$(AR) $(NAME) $(OBJ)
 
-SRC 		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-###
-
-OBJF		=	.cache_exists
-
-all:		$(OBJF) $(NAME)
-
-$(NAME):	$(OBJ)
-			@$(AR) $(NAME) $(OBJ)
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJF):
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@touch $(OBJF)
 
 clean:
 	@$(RM) $(OBJ)
@@ -63,9 +43,9 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 
-re:			fclean all
+re: fclean all
 
 norm:
-			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
+	@norminette $(SRC) $(INCLUDE) | grep -v Norme -B1 || true
 
-.PHONY:		all clean fclean re norm
+.PHONY: all clean fclean re norm
